@@ -1,0 +1,33 @@
+{
+  admin off
+}
+
+:8080 {
+  encode gzip
+
+  handle /api/* {
+    request_body {
+      max_size 100MB
+    }
+    reverse_proxy backend:8000
+  }
+
+  handle {
+    reverse_proxy frontend:3000
+  }
+
+  header {
+    -Server
+    Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-src 'self' blob:; worker-src 'self' blob:"
+    Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    Strict-Transport-Security "max-age=31536000"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "SAMEORIGIN"
+  }
+
+  log {
+    output stdout
+    format json
+  }
+}

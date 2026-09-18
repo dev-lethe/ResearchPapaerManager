@@ -1,0 +1,31 @@
+{
+  "name": "research-paper-manager-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.3.3",
+    "pdfjs-dist": "^5.4.624",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-markdown": "9.0.1",
+    "remark-gfm": "4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.31",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "autoprefixer": "10.4.21",
+    "postcss": "^8.5.26",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}
